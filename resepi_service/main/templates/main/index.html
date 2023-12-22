@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="{% static 'main/css/main.css' %}" />
+		<link rel="stylesheet" href="{% static 'main/css/index.css' %}" />
+		<img src="{% static 'main/img/bg.jpg' %}">
+		<title>Food service</title>
+	</head>
+	<body>
+		<main>
+			<section class="index">
+				<section class="block">
+					<nav class="navbar">
+						<div class="nav-item logo"><a href="#logo">Logo</a></div>
+						<link class="nav-item"><a href="/about">About US</a></link>
+						<link class="nav-item"><a href="/support">Support</a></link>
+					</nav>
+					<h1 class="title">Cook with us!</h1>
+					<a class="btn green-block" href="#recipes">Choose a recipe</a>
+				</section>
+			</section>
+
+			<div class="by-ingredients">
+				<header class="header" id="recipes">
+					<h1 class="title green-block">Recipe selection</h1>
+					<nav class="navbar">
+						<div class="nav-item active">
+							<a href="{% url 'home' %}">by ingredients</a>
+						</div>
+						<div class="nav-item">
+							<a href="{% url 'byKitchen' %}">according to world cuisines</a>
+						</div>
+						<div class="nav-item">
+							<a href="{% url 'recipeGenerator' %}">recipe generator</a>
+						</div>
+					</nav>
+				</header>
+
+				<section class="main-block">
+					<div class="block">
+						<p class="description">
+							Choose your products carefully! We will try to find for you how as
+							many recipes available to you as possible.
+						</p>
+						<form class="form" method="GET">
+							<div class="inputs">
+								<label
+									><div class="description">Enter desired ingredients:</div>
+									<div class="warn">
+										<p>*If you want to enter multiple ingredients, use (,)</p>
+									</div>
+									<input
+										id="search"
+										type="text"
+										class="input"
+										placeholder="..."
+								/></label>
+								<label
+									><div class="description">
+										Add ingredients that need to be omitted:
+									</div>
+									<div class="warn">
+										<p>If you want to exclude several ingredients, use (,)</p>
+									</div>
+									<input
+										id="except"
+										type="text"
+										class="input"
+										placeholder="..."
+								/></label>
+							</div>
+							<button type="submit" class="btn green-block">Find</button>
+						</form>
+					</div>
+				</section>
+			</div>
+		</main>
+	</body>
+</html>

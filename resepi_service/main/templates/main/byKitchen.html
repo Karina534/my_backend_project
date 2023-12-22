@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/byKitchen.css' %}" />
+    <title>Food service | По Мировым Кухням</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="title green-block">Recipe selection</h1>
+      <nav class="navbar">
+        <div class="nav-item">
+          <a href="{% url 'home' %}">by ingredients</a>
+        </div>
+        <div class="nav-item active">
+          <a href="{% url 'byKitchen' %}">according to world cuisines</a>
+        </div>
+        <div class="nav-item">
+          <a href="{% url 'recipeGenerator' %}">recipe generator</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="by-kitchens main-block">
+      <div class="block">
+        <p class="description">
+          If you have special preferences for national cuisines of different countries, we will be happy to provide you with a choice of popular cuisines peace.
+        </p>
+        <form class="form">
+          <p class="description">Select your desired kitchens:</p>
+          <div class="checkboxes">
+            <div class="col">
+              <label class="checkbox description"
+                >Russian kitchen<input type="checkbox" id="Russian" /><span class="checkmark"></span
+              ></label>
+              <label class="checkbox description"
+                >Italian Cuisine<input type="checkbox" id="Italian" /><span class="checkmark"></span
+              ></label>
+              <label class="checkbox description"
+                >Chinese cuisine<input type="checkbox" id="Chinese" /><span class="checkmark"></span
+              ></label>
+              <label class="checkbox description"
+                >Turkish cuisine<input type="checkbox" id="Turkish" /><span class="checkmark"></span
+              ></label>
+              <label class="checkbox description"
+                >Georgian cuisine<input type="checkbox" id="Georgian" /><span class="checkmark"></span
+              ></label>
+              <label class="checkbox description"
+                >Japanese food<input type="checkbox" id="Japanese" /><span class="checkmark"></span
+              ></label>
+            </div>
+            <div class="col">
+              <label class="checkbox description"
+                >Uzbek cuisine<input type="checkbox" id="Uzbek" /><span class="checkmark"></span
+              ></label>
+              <label class="checkbox description"
+                >Tatar cuisine<input type="checkbox" id="Tatar" /><span class="checkmark"></span
+              ></label>
+              <label class="checkbox description"
+                >Thai cuisine<input type="checkbox" id="Thai" /><span class="checkmark"></span
+              ></label>
+              <label class="checkbox description"
+                >French cuisine<input type="checkbox" id="French" /><span class="checkmark"></span
+              ></label>
+              <label class="checkbox description"
+                >Indian food<input type="checkbox" id="Indian" /><span class="checkmark"></span
+              ></label>
+              <label class="checkbox description"
+                >Peruvian cuisine<input type="checkbox" id="Peruvian" /><span class="checkmark"></span
+              ></label>
+            </div>
+          </div>
+          <button type="submit" class="btn green-block">Find</button>
+        </form>
+      </div>
+    </main>
+    <div class="background"></div>
+    <script src="../js/searchKitchens.js"></script>
+  </body>
+</html>
