@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 class User(models.Model):
     Name = models.CharField(max_length=30, blank=False)
@@ -18,6 +20,17 @@ class Recipe(models.Model):
     photo = models.ImageField(upload_to='photos/')
     time_create = models.DateTimeField(auto_now_add=True)
     is_published = models.BooleanField(default=True)
+    category = models.ForeignKey('Categories', on_delete=models.PROTECT, null=True)
 
     def __str__(self):
         return self.title
+    def get_absolute_url(self):
+        return reverse('recipe', kwargs={'recipe_id': self.pk})
+
+class Categories(models.Model):
+    name = models.CharField(max_length=20, db_index=True)
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'category_id': self.pk})

@@ -3,7 +3,7 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views import show_recipe
+from .views import show_recipe, show_category
 
 urlpatterns = [
     path('', views.index, name='home'),
@@ -14,5 +14,6 @@ urlpatterns = [
     path('byKitchen', views.byKitchen, name='byKitchen'),
     path('recipes', views.recipes, name='recipes'),
     path('support', views.support, name='support'),
-    path('recipe/<int:recipe_id>/', show_recipe, name='recipe')
+    path('recipe/<int:recipe_id>/', show_recipe, name='recipe'),
+    path('category/<int:category_id>', show_category, name='category')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

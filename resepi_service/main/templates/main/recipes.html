@@ -4,22 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Recipes</title>
-    <link type="text/css" href="{% static 'main/css/recipe.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/recipe.css' %}" />
 </head>
 
 {% block content %}
 <h1 class="main_title">{{title}}</h1>
+
 <body>
-    <ul>
-        {% for ri in recipes %}
-        <li>
-            <h2>{{ri.title}}</h2>
-            <p>{{ri.content|truncatewords:30}}</p>
-            <button><a href="{% url 'recipe' ri.pk %}">Читать статью</a></button>
-            <hr>
-        </li>
+    <div class="left_bord">
+        {% if category_selected == 0 %}
+            <p calss="selected">Все категории</p>
+        {% else %}
+            <li><a href="{% url 'recipes' %}">Все категории</a></li>
+        {% endif %}
+
+        {% for c in category %}
+            {% if c.pk == category_selected %}
+                <p class="selected">{{c.name}}</p>
+            {% else %}
+                <li><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
+            {%endif%}
         {% endfor %}
-    </ul>
+    </div>
+
+    <div class="articles">
+        <ul>
+            {% for ri in recipes %}
+            <li>
+                <p>Категория: {{ ri.category }}</p>
+                <p>Дата: {{ ri.time_create }}</p>
+                <h2>{{ri.title}}</h2>
+                <p>{{ri.content|truncatewords:30}}</p>
+                <button><a href="{{ ri.get_absolute_url }}">Читать статью</a></button>
+                <hr>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 {% endblock %}
 </html>

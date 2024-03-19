@@ -15,9 +15,9 @@
 				<section class="block">
 					<nav class="navbar">
 						<div class="nav-item logo"><a href="#logo">Logo</a></div>
-						<link class="nav-item"><a href="/about">About US</a></link>
-						<link class="nav-item"><a href="/support">Support</a></link>
-						<link class="nav-item"><a href="/recipes">Recipes</a>
+						<link class="nav-item"><a href="{% url 'about' %}">About US</a></link>
+						<link class="nav-item"><a href="{% url 'support' %}">Support</a></link>
+						<link class="nav-item"><a href="{% url 'recipes' %}">Recipes</a>
 					</nav>
 					<h1 class="title">Cook with us!</h1>
 					<a class="btn green-block" href="#recipes">Choose a recipe</a>
