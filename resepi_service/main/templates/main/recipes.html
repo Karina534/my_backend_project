@@ -1,4 +1,5 @@
 {% load static %}
+{% load main_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'main/css/recipe.css' %}" />
 </head>
 
+<p><a href="{% url 'add_recipe' %}">Добавить статью</a></p>
 {% block content %}
 <h1 class="main_title">{{title}}</h1>
 
@@ -18,13 +20,7 @@
             <li><a href="{% url 'recipes' %}">Все категории</a></li>
         {% endif %}
 
-        {% for c in category %}
-            {% if c.pk == category_selected %}
-                <p class="selected">{{c.name}}</p>
-            {% else %}
-                <li><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
-            {%endif%}
-        {% endfor %}
+        {% show_categories %}
     </div>
 
     <div class="articles">
@@ -33,6 +29,9 @@
             <li>
                 <p>Категория: {{ ri.category }}</p>
                 <p>Дата: {{ ri.time_create }}</p>
+                {% if ri.photo %}
+                    <p><img src="{{ri.photo.url}}" alt="photo"></p>
+                {% endif %}
                 <h2>{{ri.title}}</h2>
                 <p>{{ri.content|truncatewords:30}}</p>
                 <button><a href="{{ ri.get_absolute_url }}">Читать статью</a></button>
