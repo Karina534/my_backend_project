@@ -1,0 +1,22 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+    <div class="features">
+        <h1>Новости на сайте</h1>
+        <p>Really long long text sbdugb slebgi woejbw lbwejf ksefu sekfuse kweur  kweqru saektuet3 vewtwbe twyw ybe r her he ereye ryery</p>
+        <button class="btn btn-warning">На страницу про нас</button>
+
+        {% if news %}
+            {% for el in news %}
+                <div class="alert alert-warning">
+                    <h3>{{ el.title }}</h3>
+                    <p>{{ el.anons }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Нет новостей</p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block title %}<title>Новости на сайте</title>{% endblock %}
