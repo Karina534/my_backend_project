@@ -15,13 +15,13 @@ class User(models.Model):
         return f'{self.Name}, {self.Sername}'
 
 class Recipe(models.Model):
-    title = models.CharField(max_length=150)
-    slug = models.SlugField(max_length=255, unique=True, db_index=True)
-    content = models.TextField()
-    photo = models.ImageField(upload_to='photos/')
+    title = models.CharField(max_length=150, verbose_name='Заголовок')
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
+    content = models.TextField(verbose_name='Описание')
+    photo = models.ImageField(upload_to='photos/', verbose_name='Фото')
     time_create = models.DateTimeField(auto_now_add=True)
-    is_published = models.BooleanField(default=True)
-    category = models.ForeignKey('Categories', on_delete=models.PROTECT)
+    is_published = models.BooleanField(default=True, verbose_name="Опубликовать")
+    category = models.ForeignKey('Categories', on_delete=models.PROTECT, verbose_name='Категория')
 
     def __str__(self):
         return self.title
